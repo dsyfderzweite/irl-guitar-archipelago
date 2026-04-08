@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
-namespace GuitarAP;
+namespace GuitarAP.Code;
 
 public static class InputManager{
     private static MouseState previousMouseState;
@@ -56,6 +56,21 @@ public static class InputManager{
     public static bool GetIsMouseButtonDown(MouseButton btn, bool currentState)
     {
         return !GetIsMouseButtonUp(btn, currentState);
+    }
+
+    public static bool IsMouseButtonPressed(MouseButton btn)
+    {
+        switch (btn)
+        {
+            case MouseButton.Left:
+                return currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released;
+            case MouseButton.Middle:
+                return currentMouseState.MiddleButton == ButtonState.Pressed && previousMouseState.MiddleButton == ButtonState.Released;
+            case MouseButton.Right:
+                return currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released;
+        }
+
+        return false;
     }
 
     // TODO: Keyboard input stuff goes here.
