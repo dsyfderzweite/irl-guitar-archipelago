@@ -12,7 +12,7 @@ namespace GuitarAP.Code
         public int MaxMessages { get; set; } = 5;
         private SpriteFont _genericFont;
         private Vector2 _anchor; // The position of the bottom left corner of the screen
-        public int _lifetime { get; set; } = 5; // in seconds
+        public int lifetime { get; set; } = 5; // in seconds
 
         public NotificationBox()
         {
@@ -45,10 +45,10 @@ namespace GuitarAP.Code
             }
             MessageBuffer.Clear();
             // Remove expired messages
-            Messages.RemoveAll(m => (gameTime.TotalGameTime - m.addedTime).TotalSeconds > _lifetime);
+            Messages.RemoveAll(m => (gameTime.TotalGameTime - m.addedTime).TotalSeconds > lifetime);
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < Messages.Count; i++)
             {

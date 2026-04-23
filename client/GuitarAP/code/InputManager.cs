@@ -58,7 +58,7 @@ public static class InputManager{
         return !GetIsMouseButtonUp(btn, currentState);
     }
 
-    public static bool IsMouseButtonPressed(MouseButton btn)
+    public static bool GetIsMouseButtonPressed(MouseButton btn)
     {
         switch (btn)
         {
